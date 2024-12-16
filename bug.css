@@ -1,0 +1,13 @@
+The following CSS code snippet demonstrates an unusual error that can occur when using CSS variables (custom properties) within calc() functions.  The issue arises when attempting to perform mathematical calculations involving percentages and CSS variables that themselves contain percentage values.  Specifically, the issue arises with the behavior of percentages within the calc() function.  If the percentage isn't directly referencing a related element (or container), there is a mismatch.
+
+```css
+:root {
+  --my-width: 50%;
+}
+
+.container {
+  width: calc(100% - var(--my-width)); /* Unexpected behavior */
+}
+```
+
+The expected result would be that '.container' would occupy 50% of its containing element's width. However, the actual result may vary depending on the browser and may result in '.container' having a width of 100%, effectively ignoring the calculation with the variable. 
