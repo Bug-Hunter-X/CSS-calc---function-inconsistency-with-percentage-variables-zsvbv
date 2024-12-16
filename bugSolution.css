@@ -1,0 +1,21 @@
+The solution involves avoiding direct percentage subtraction within the `calc()` function by defining explicit width using a fixed value, instead of relying on percentages derived from a CSS variable.
+
+```css
+:root {
+  --my-width: 50%;
+}
+
+.container {
+  width: calc(100% - 50%); /*Corrected calculation*/
+}
+
+/*Alternative Solution (more flexible): using viewport units or fixed-unit values to calculate*/
+:root{
+  --vw-width: 50vw;
+}
+.container {
+  width: calc(100vw - var(--vw-width));
+}
+```
+
+By specifying a fixed width, the calculation becomes predictable and consistent across different browsers, preventing the unexpected layout issues caused by the original approach.
